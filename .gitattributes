@@ -1,0 +1,10 @@
+# LF normalization
+* text = auto
+*.md text eol=crlf
+*.gd text eol=crlf
+*.tscn text eol=crlf
+*.tres text eol=crlf
+*.png binary
+*.png.import text eol=crlf
+*.stex binary
+*.md5 text eol=crlf
