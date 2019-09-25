@@ -8,3 +8,5 @@
 *.png.import text eol=crlf
 *.stex binary
 *.md5 text eol=crlf
+*.blend binary
+*.obj binary
