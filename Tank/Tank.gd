@@ -1,7 +1,7 @@
 extends KinematicBody
 
-const max_speed: float = 1.0
-const acceleration: float = 0.01
+const max_speed: float = 10.0
+const acceleration: float = 0.1
 
 var direction: float = 0.0
 var velocity: Vector3 = Vector3()
