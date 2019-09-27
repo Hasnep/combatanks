@@ -1,5 +1,5 @@
 # LF normalization
-* text = auto
+* text=auto
 *.md text eol=crlf
 *.gd text eol=crlf
 *.tscn text eol=crlf
