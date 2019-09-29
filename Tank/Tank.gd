@@ -19,7 +19,7 @@ func _physics_process(delta: float):
 		desired_x += 1
 
 	var direction_delta: float
-	if desired_x == 0 && desired_z == 0:
+	if desired_x == 0 and desired_z == 0:
 		speed = 0
 	else:
 		var facing: Vector2 = Vector2(global_transform.basis.z.x, global_transform.basis.z.z)
