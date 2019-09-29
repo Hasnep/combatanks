@@ -35,4 +35,4 @@ func _physics_process(delta: float):
 			
 		rotation += Vector3(0, direction_delta, 0)
 		speed = max_speed
-	move_and_slide(speed * global_transform.basis.z)
+	var linear_velocity = move_and_slide(speed * global_transform.basis.z)
