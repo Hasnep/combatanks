@@ -24,11 +24,15 @@ func _physics_process(delta: float):
 	else:
 		var facing: Vector2 = Vector2(global_transform.basis.z.x, global_transform.basis.z.z)
 		direction_delta = Vector2(desired_x, desired_z).angle_to(facing)
+		
 		# Limit rotation speed
 		direction_delta = min(direction_delta, max_angular_velocity)
 		direction_delta = max(direction_delta, -max_angular_velocity)
+		
+		# Snap to direction
 		if abs(direction_delta) < 0.001:
 			direction_delta = 0
+			
 		rotation += Vector3(0, direction_delta, 0)
 		speed = max_speed
 	move_and_slide(speed * global_transform.basis.z)
