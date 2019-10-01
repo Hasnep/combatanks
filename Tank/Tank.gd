@@ -1,38 +1,49 @@
 extends KinematicBody
 
+onready var tank_base: MeshInstance = $"TankBase"
+onready var tank_turret: MeshInstance = $"TankTurret"
+onready var mouse_marker:MeshInstance = $"../MouseMarker"
+
 const max_speed: float = 10.0
-const max_angular_velocity: float = 0.1
+const base_max_angular_velocity: float = 0.1
 
 var speed: float = 0.0
 
 func _physics_process(delta: float):
-	var desired_z: int = 0
-	var desired_x: int = 0
+	var base_desired_z: int = 0
+	var base_desired_x: int = 0
 
 	if Input.is_action_pressed("move_up"):
-		desired_z -= 1
+		base_desired_z -= 1
 	if Input.is_action_pressed("move_down"):
-		desired_z += 1
+		base_desired_z += 1
 	if Input.is_action_pressed("move_left"):
-		desired_x -= 1
+		base_desired_x -= 1
 	if Input.is_action_pressed("move_right"):
-		desired_x += 1
+		base_desired_x += 1
 
-	var direction_delta: float
-	if desired_x == 0 and desired_z == 0:
+	if base_desired_x == 0 and base_desired_z == 0:
 		speed = 0
 	else:
-		var facing: Vector2 = Vector2(global_transform.basis.z.x, global_transform.basis.z.z)
-		direction_delta = Vector2(desired_x, desired_z).angle_to(facing)
+		var base_facing: Vector2 = Vector2(tank_base.global_transform.basis.z.x, tank_base.global_transform.basis.z.z)
+		var base_direction_delta: float = Vector2(base_desired_x, base_desired_z).angle_to(base_facing)
 		
 		# Limit rotation speed
-		direction_delta = min(direction_delta, max_angular_velocity)
-		direction_delta = max(direction_delta, -max_angular_velocity)
+		base_direction_delta = min(base_direction_delta, base_max_angular_velocity)
+		base_direction_delta = max(base_direction_delta, -base_max_angular_velocity)
 		
 		# Snap to direction
-		if abs(direction_delta) < 0.001:
-			direction_delta = 0
-			
-		rotation += Vector3(0, direction_delta, 0)
+		if abs(base_direction_delta) < 0.001:
+			base_direction_delta = 0
+		
+		tank_base.rotation += Vector3(0, base_direction_delta, 0)
 		speed = max_speed
-	var linear_velocity = move_and_slide(speed * global_transform.basis.z)
+	
+	# Move tank		
+	var linear_velocity = move_and_slide(speed * tank_base.global_transform.basis.z)
+
+	# Make turret face mouse	
+	var mouse_position_2d: Vector2 = Vector2(mouse_marker.transform.origin.x, mouse_marker.transform.origin.z)
+	var tank_position_2d: Vector2 = Vector2(transform.origin.x, transform.origin.z)
+	var turret_angle:float = (mouse_position_2d-tank_position_2d).angle_to(Vector2(0,1))
+	tank_turret.rotation = Vector3(0,turret_angle,0)
