@@ -2,7 +2,7 @@ extends KinematicBody
 
 onready var tank_base: MeshInstance = $"TankBase"
 onready var tank_turret: MeshInstance = $"TankTurret"
-onready var mouse_marker:MeshInstance = $"../MouseMarker"
+onready var mouse_marker: MeshInstance = $"../MouseMarker"
 
 const max_speed: float = 10.0
 const base_max_angular_velocity: float = 0.1
@@ -39,11 +39,11 @@ func _physics_process(delta: float):
 		tank_base.rotation += Vector3(0, base_direction_delta, 0)
 		speed = max_speed
 	
-	# Move tank		
+	# Move tank
 	var linear_velocity = move_and_slide(speed * tank_base.global_transform.basis.z)
-
-	# Make turret face mouse	
+	
+	# Make turret face mouse
 	var mouse_position_2d: Vector2 = Vector2(mouse_marker.transform.origin.x, mouse_marker.transform.origin.z)
 	var tank_position_2d: Vector2 = Vector2(transform.origin.x, transform.origin.z)
-	var turret_angle:float = (mouse_position_2d-tank_position_2d).angle_to(Vector2(0,1))
-	tank_turret.rotation = Vector3(0,turret_angle,0)
+	var turret_angle: float = (mouse_position_2d - tank_position_2d).angle_to(Vector2(0, 1))
+	tank_turret.rotation = Vector3(0, turret_angle, 0)
