@@ -1,8 +1,11 @@
 extends MeshInstance
 
-onready var mouse_marker: MeshInstance = $"../MouseMarker"
+onready var tank_base: KinematicBody = $"../TankBase"
+onready var mouse_marker: MeshInstance = $"../../MouseMarker"
 
-func process(delta: float):
+func _process(delta: float):
+	transform.origin = tank_base.transform.origin
+	
 	# Make turret face mouse
 	var mouse_position_2d: Vector2 = Vector2(mouse_marker.transform.origin.x, mouse_marker.transform.origin.z)
 	var tank_position_2d: Vector2 = Vector2(transform.origin.x, transform.origin.z)

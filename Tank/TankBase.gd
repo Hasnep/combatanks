@@ -1,5 +1,7 @@
 extends KinematicBody
 
+onready var tank: Spatial = $"../Tank"
+
 const max_speed: float = 10.0
 const max_angular_velocity: float = 0.1
 
