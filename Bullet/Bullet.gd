@@ -8,6 +8,6 @@ func _physics_process(delta: float):
 func constructor(parent: KinematicBody, turret_position: Vector3, direction: Vector3):
 	add_collision_exception_with(parent) # don't collide with parent
 	rotation = direction
-	transform.origin = turret_position + \
-	Vector3(0,1.5,0) + \ # add turret height
-	Vector3()
+	turret_position += Vector3(0,1.5,0) # add turret height 
+	turret_position += Vector3() # add barrel length
+	transform.origin = turret_position
