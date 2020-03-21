@@ -16,9 +16,9 @@ func _process(delta: float):
 	rotation = Vector3(0, turret_angle, 0)
 	
 	if Input.is_action_just_pressed("shoot"):
-        shoot()
+		shoot()
 
 func shoot():
-    var b = Bullet.instance()
-    b.constructor(tank_base, transform.origin, rotation)
-    bullet_container.add_child(b)
+	var b = Bullet.instance()
+	b.constructor(tank_base, transform.origin, rotation)
+	bullet_container.add_child(b)
