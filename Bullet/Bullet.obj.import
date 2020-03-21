@@ -15,4 +15,5 @@ dest_files=[ "res://.import/Bullet.obj-1814dfaa97772e30d5b031bc6fb12e99.mesh", "
 
 generate_tangents=true
 scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
 optimize_mesh=true
