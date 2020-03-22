@@ -10,5 +10,5 @@ func constructor(parent: KinematicBody, turret_position: Vector3, direction: Vec
 	turret_position += BARREL_LENGTH * transform.basis.z  # Add barrel length
 	transform.origin = turret_position
 
-func _physics_process(delta: float):
+func _physics_process(_delta: float):
 	move_and_slide(BULLET_SPEED * global_transform.basis.z)
