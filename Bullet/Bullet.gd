@@ -1,7 +1,7 @@
 extends KinematicBody
 
 const speed: float = 10.0
-const BARREL_LENGTH = 1.8
+const BARREL_LENGTH: float = 1.8
 
 func _physics_process(delta: float):
 	move_and_slide(speed * global_transform.basis.z)
