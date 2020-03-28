@@ -18,6 +18,10 @@ _global_script_class_icons={
 config/name="CombaTanks!"
 run/main_scene="res://World.tscn"
 
+[display]
+
+window/vsync/use_vsync=false
+
 [input]
 
 move_up={
