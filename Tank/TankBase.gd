@@ -7,7 +7,7 @@ const max_angular_velocity: float = 0.1
 
 var speed: float = 0.0
 
-func _physics_process(delta: float):
+func _physics_process(_delta: float):
 	var desired_z: int = 0
 	var desired_x: int = 0
 

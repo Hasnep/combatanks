@@ -6,7 +6,7 @@ onready var tank_base: KinematicBody = $"../TankBase"
 onready var mouse_marker: MeshInstance = $"../../MouseMarker"
 onready var bullet_container: Node = $"../../Bullets"
 
-func _process(delta: float):
+func _process(_delta: float):
 	transform.origin = tank_base.transform.origin
 
 	# Make turret face mouse
