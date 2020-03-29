@@ -9,8 +9,8 @@ func constructor(parent: KinematicBody, turret_position: Vector3, direction: Vec
 	rotation = direction
 	transform.origin = (
 		turret_position
-            + Vector3(0, TURRRET_HEIGHT, 0)  # Add turret height
-            + BARREL_LENGTH * transform.basis.z  # Add barrel length
+		+ Vector3(0, TURRRET_HEIGHT, 0)  # Add turret height
+		+ BARREL_LENGTH * transform.basis.z  # Add barrel length
 	)
 
 func _physics_process(_delta: float):
