@@ -1,6 +1,9 @@
 extends KinematicBody
 
+var Mine = preload("res://Mine/Mine.tscn")
+
 onready var tank: Spatial = $"../Tank"
+onready var mine_container: Node = $"../../Mines"
 
 const max_speed: float = 10.0
 const max_angular_velocity: float = 0.1
@@ -39,3 +42,11 @@ func _physics_process(delta: float):
 
 	# Move tank
 	move_and_slide(speed * global_transform.basis.z)
+	
+	if Input.is_action_just_pressed("mine"):
+		lay_mine()
+
+func lay_mine():
+	var m = Mine.instance()
+	m.constructor(transform.origin)
+	mine_container.add_child(m)
