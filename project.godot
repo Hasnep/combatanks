@@ -18,6 +18,10 @@ _global_script_class_icons={
 config/name="CombaTanks!"
 run/main_scene="res://World.tscn"
 
+[display]
+
+window/vsync/use_vsync=false
+
 [input]
 
 move_up={
@@ -57,4 +61,5 @@ mine={
 
 [rendering]
 
+threads/thread_model=2
 environment/default_environment="res://default_env.tres"
