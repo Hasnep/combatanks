@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="ParticlesMaterial" id=2]
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+flag_rotate_y = true
+direction = Vector3( 0, 1, 0 )
+spread = 18.14
+gravity = Vector3( 0, -9.81, 0 )
+initial_velocity = 10.0
+initial_velocity_random = 0.86
+angular_velocity = 30.0
+angular_velocity_random = 1.0
+radial_accel = 100.0
+radial_accel_random = 1.0
+tangential_accel_random = 1.0
+damping = 2.95
+damping_random = 1.0
+angle = 91.8
+
+[sub_resource type="CubeMesh" id=3]
+size = Vector3( 0.25, 0.25, 0.25 )
+
+[node name="BlockExplodeParticles" type="Particles"]
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 2 )
+draw_pass_1 = SubResource( 3 )
