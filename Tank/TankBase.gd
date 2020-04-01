@@ -10,6 +10,7 @@ const max_angular_velocity: float = 0.1
 
 var speed: float = 0.0
 
+
 func _physics_process(_delta: float):
 	var desired_z: int = 0
 	var desired_x: int = 0
@@ -26,7 +27,9 @@ func _physics_process(_delta: float):
 	if desired_x == 0 and desired_z == 0:
 		speed = 0
 	else:
-		var facing: Vector2 = Vector2(global_transform.basis.z.x, global_transform.basis.z.z)
+		var facing: Vector2 = Vector2(
+			global_transform.basis.z.x, global_transform.basis.z.z
+		)
 		var direction_delta: float = Vector2(desired_x, desired_z).angle_to(facing)
 
 		# Limit rotation speed
@@ -42,9 +45,10 @@ func _physics_process(_delta: float):
 
 	# Move tank
 	move_and_slide(speed * global_transform.basis.z)
-	
+
 	if Input.is_action_just_pressed("mine"):
 		lay_mine()
+
 
 func lay_mine():
 	var m = Mine.instance()

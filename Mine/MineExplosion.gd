@@ -53,5 +53,6 @@ func _ready():
 	# Emit particles
 	MineExplosionParticles.emitting = true
 
+
 func _on_explosion_tweens_completed():
 	self.queue_free()
