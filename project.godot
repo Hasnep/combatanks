@@ -20,6 +20,8 @@ run/main_scene="res://World.tscn"
 
 [display]
 
+window/size/width=960
+window/size/height=540
 window/size/fullscreen=true
 window/vsync/use_vsync=false
 
