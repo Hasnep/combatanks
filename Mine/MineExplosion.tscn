@@ -4,18 +4,18 @@
 [ext_resource path="res://Mine/MineExplosionTexture.tres" type="Material" id=2]
 [ext_resource path="res://Mine/MineExplosionModel.tres" type="SphereMesh" id=3]
 
-[sub_resource type="ParticlesMaterial" id=7]
+[sub_resource type="ParticlesMaterial" id=1]
 spread = 180.0
 flatness = 1.0
 gravity = Vector3( 0, 0, 0 )
 initial_velocity = 8.0
 damping = 4.0
 
-[sub_resource type="SpatialMaterial" id=8]
+[sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 0.988235, 0.603922, 0.113725, 1 )
 
-[sub_resource type="SphereMesh" id=9]
-material = SubResource( 8 )
+[sub_resource type="SphereMesh" id=3]
+material = SubResource( 2 )
 radius = 0.05
 height = 0.05
 radial_segments = 5
@@ -32,8 +32,8 @@ emitting = false
 amount = 100
 one_shot = true
 explosiveness = 1.0
-process_material = SubResource( 7 )
-draw_pass_1 = SubResource( 9 )
+process_material = SubResource( 1 )
+draw_pass_1 = SubResource( 3 )
 
 [node name="MineExplosionModel" type="MeshInstance" parent="."]
 cast_shadow = 2
@@ -42,6 +42,7 @@ material/0 = ExtResource( 2 )
 
 [node name="MineExplosionLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.156709, 0 )
+light_color = Color( 0.980392, 0.772549, 0.215686, 1 )
 light_indirect_energy = 0.0
 light_specular = 1.0
 

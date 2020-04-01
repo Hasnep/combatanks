@@ -1,0 +1,10 @@
+[gd_resource type="SphereMesh" load_steps=2 format=2]
+
+[ext_resource path="res://Mine/MineMaterial.tres" type="Material" id=1]
+
+[resource]
+material = ExtResource( 1 )
+height = 1.0
+radial_segments = 12
+rings = 6
+is_hemisphere = true
