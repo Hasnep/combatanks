@@ -1,15 +1,17 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Tank/TankTexture.tres" type="Material" id=1]
 [ext_resource path="res://Tank/TankTurret.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://Tank/TankTurret.gd" type="Script" id=3]
 [ext_resource path="res://Tank/TankBase.gd" type="Script" id=4]
 [ext_resource path="res://Tank/TankBase.obj" type="ArrayMesh" id=5]
+[ext_resource path="res://Tank/Tank.gd" type="Script" id=6]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1, 1, 1.5 )
 
 [node name="Tank" type="Spatial"]
+script = ExtResource( 6 )
 
 [node name="TankTurret" type="MeshInstance" parent="."]
 material_override = ExtResource( 1 )
