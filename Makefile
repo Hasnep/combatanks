@@ -1,5 +1,5 @@
 format:
-	~/.venvs/gdtoolkit/bin/gdformat --line-length 89 **/*.gd 
+	~/.venvs/gdtoolkit/bin/gdformat --line-length 88 **/*.gd 
 
 install_gdtoolkit:
 	mkdir -p ~/.venvs/gdtoolkit/
