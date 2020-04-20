@@ -1,8 +1,8 @@
 extends Spatial
 
 onready var MineExplosionTween: Tween = $"MineExplosionTween"
-onready var MineExplosionParticles:Particles = $"MineExplosionParticles"
-onready var MineExplosionLight:Light = $"MineExplosionLight"
+onready var MineExplosionParticles: Particles = $"MineExplosionParticles"
+onready var MineExplosionLight: Light = $"MineExplosionLight"
 onready var MineExplosionModel: MeshInstance = $"MineExplosionModel"
 
 const EXPLOSION_DURATION: float = 1.0
@@ -15,7 +15,7 @@ func _ready():
 		"scale",
 		Vector3(1, 1, 1),
 		Vector3(3, 3, 3),
-		0.5*EXPLOSION_DURATION ,
+		0.5 * EXPLOSION_DURATION,
 		Tween.TRANS_QUAD,
 		Tween.EASE_OUT
 	)
@@ -45,7 +45,7 @@ func _ready():
 		"light_energy",
 		100,
 		0,
-		0.5*EXPLOSION_DURATION,
+		0.5 * EXPLOSION_DURATION,
 		Tween.TRANS_QUAD,
 		Tween.EASE_OUT
 	)
