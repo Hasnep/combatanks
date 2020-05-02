@@ -30,7 +30,9 @@ func _collide_wall(collision: KinematicCollision):
 	var collision_normal: Vector3 = collision.normal
 	var collision_normal_2d: Vector2 = three_to_two(collision_normal)
 	# Calculate the remaining motion after colliding
-	var remaining_motion_2d: Vector2 = three_to_two(collision.remainder).bounce(collision_normal_2d)
+	var remaining_motion_2d: Vector2 = three_to_two(collision.remainder).bounce(
+		collision_normal_2d
+	)
 	var remaining_motion_3d: Vector3 = two_to_three(remaining_motion_2d)
 	# Calculate new velocity after colliding
 	var velocity_2d: Vector2 = three_to_two(velocity)
