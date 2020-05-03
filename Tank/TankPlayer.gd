@@ -2,21 +2,20 @@ extends "res://Tank/Tank.gd"
 
 onready var mouse_marker: MeshInstance = get_node("/root/World/MouseMarker")
 
+
 func get_facing_direction() -> float:
-	var mouse_position_2d: Vector2 = Vector2(
-		mouse_marker.transform.origin.x, mouse_marker.transform.origin.z
-	)
-	var tank_position_2d: Vector2 = Vector2(transform.origin.x, transform.origin.z)
-	return (mouse_position_2d - tank_position_2d).angle_to(
-		Vector2(0, 1)
-	)
+	var mouse_position_2d: Vector2 = Global.three_to_two(mouse_marker.transform.origin)
+	var tank_position_2d: Vector2 = Global.three_to_two(transform.origin)
+	return (mouse_position_2d - tank_position_2d).angle_to(Vector2(0, 1))
 
 
 func get_shoot_action() -> bool:
 	return Input.is_action_just_pressed("shoot")
 
+
 func get_max_speed() -> float:
 	return 10.0
+
 
 func get_max_angular_velocity() -> float:
 	return 0.1
