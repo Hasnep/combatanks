@@ -1,15 +1,8 @@
 extends KinematicBody
 
 
-func get_facing_direction() -> float:
-	return 0.0
-
-
-func get_shoot_action() -> bool:
-	return false
-
-
-func get_max_speed() -> float:
+# Getter functions for constants
+func get_max_movement_speed() -> float:
 	return 0.0
 
 
@@ -17,40 +10,49 @@ func get_max_angular_velocity() -> float:
 	return 0.0
 
 
-func get_desired_direction() -> Vector2:
+func get_colour() -> Color:
+	return Color(0, 0, 0)
+
+
+# Getter functions for actions
+func get_desired_base_velocity() -> Vector2:
 	return Vector2(0, 0)
 
 
-func get_tank_colour() -> Color:
-	return Color(0, 0, 0)
+func get_desired_turret_rotation() -> float:
+	return 0.0
+
+
+func get_shoot_action() -> bool:
+	return false
 
 
 func get_lay_mine_action() -> bool:
 	return false
 
 
-var max_speed = get_max_speed()
+var max_speed = get_max_movement_speed()
 var max_angular_velocity = get_max_angular_velocity()
 
 var speed: float = 0.0
 
 
 func _ready():
-	var my_colour: Color = get_tank_colour()
+	var my_colour: Color = get_colour()
 	$"TankTurret".material_override.albedo_color = my_colour
 	$"TankBase".material_override.albedo_color = my_colour
 
 
 func _physics_process(_delta: float):
-	var desired_direction: Vector2 = get_desired_direction()
+	var desired_velocity: Vector2 = get_desired_base_velocity()
 
-	if desired_direction == Vector2(0, 0):
+	if desired_velocity == Vector2(0, 0):
 		speed = 0
 	else:
 		speed = max_speed
 
-		var facing: Vector2 = Global.three_to_two(global_transform.basis.z)
-		var direction_delta: float = desired_direction.angle_to(facing)
+		var current_direction: Vector2 = Global.three_to_two(global_transform.basis.z)
+		var direction_delta: float = desired_velocity.angle_to(current_direction)
 
 		# Limit rotation speed
 		direction_delta = min(direction_delta, max_angular_velocity)
@@ -70,7 +72,7 @@ onready var turret = $"TankTurret"
 
 
 func _process(_delta: float):
-	turret.rotation = -rotation + Vector3(0, get_facing_direction(), 0)
+	turret.rotation = -rotation + Vector3(0, get_desired_turret_rotation(), 0)
 
 	if get_shoot_action():
 		_shoot()
