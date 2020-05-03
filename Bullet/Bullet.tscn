@@ -4,7 +4,6 @@
 [ext_resource path="res://Bullet/BulletModel.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://Bullet/BulletTexture.tres" type="Material" id=3]
 
-
 [sub_resource type="CylinderShape" id=1]
 
 [node name="Bullet" type="KinematicBody"]
@@ -19,3 +18,4 @@ material/1 = ExtResource( 3 )
 transform = Transform( 4.77671e-16, 2.18557e-08, 0.25, 0.25, -2.18557e-08, 0, 1.09278e-08, 0.5, -1.09278e-08, 0, 0, 0.25 )
 shape = SubResource( 1 )
 
+[node name="BulletVisibilityNotifier" type="VisibilityNotifier" parent="."]

@@ -16,6 +16,7 @@ func constructor(parent: KinematicBody, turret_position: Vector3, direction: Vec
 		+ Vector3(0, TURRRET_HEIGHT, 0)
 		+ BARREL_LENGTH * transform.basis.z
 	)
+	$BulletVisibilityNotifier.connect("screen_exited", parent, "_on_bullet_removed")
 
 
 func _collide_wall(collision: KinematicCollision):

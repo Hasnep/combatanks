@@ -10,6 +10,10 @@ func get_max_angular_velocity() -> float:
 	return 0.0
 
 
+func get_max_bullets() -> int:
+	return 0
+
+
 func get_colour() -> Color:
 	return Color(0, 0, 0)
 
@@ -31,10 +35,12 @@ func get_lay_mine_action() -> bool:
 	return false
 
 
-var max_speed = get_max_movement_speed()
-var max_angular_velocity = get_max_angular_velocity()
+var max_speed: float = get_max_movement_speed()
+var max_angular_velocity: float = get_max_angular_velocity()
+var max_bullets: int = get_max_bullets()
 
 var speed: float = 0.0
+var n_bullets: int = 0
 
 
 func _ready():
@@ -96,6 +102,12 @@ onready var bullet_container: Node = get_node("/root/World/Bullets")
 
 
 func _shoot():
-	var b = Bullet.instance()
-	b.constructor($".", transform.origin, turret.global_transform.basis.get_euler())
-	bullet_container.add_child(b)
+	if n_bullets < max_bullets:
+		var b = Bullet.instance()
+		b.constructor($".", transform.origin, turret.global_transform.basis.get_euler())
+		bullet_container.add_child(b)
+		n_bullets += 1
+
+
+func _on_bullet_removed():
+	n_bullets -= 1

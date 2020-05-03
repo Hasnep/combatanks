@@ -10,6 +10,10 @@ func get_max_angular_velocity() -> float:
 	return 0.0
 
 
+func get_max_bullets() -> int:
+	return 1
+
+
 func get_colour() -> Color:
 	return Color(1, 0, 0)
 
