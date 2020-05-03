@@ -43,5 +43,5 @@ func get_tank_colour() -> Color:
 	return Color(player_colours[randi() % len(player_colours)])
 
 
-func get_mine_lay_action() -> bool:
+func get_lay_mine_action() -> bool:
 	return Input.is_action_just_pressed("mine")
