@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="CombaTanks!"
-run/main_scene="res://World.tscn"
+run/main_scene="res://World/World.tscn"
 
 [autoload]
 
@@ -84,4 +84,4 @@ quit_game={
 [rendering]
 
 threads/thread_model=2
-environment/default_environment="res://WorldEnvironment.tres"
+environment/default_environment="res://World/WorldEnvironment.tres"
