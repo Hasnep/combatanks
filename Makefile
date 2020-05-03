@@ -1,5 +1,5 @@
 format:
-	~/.venvs/gdtoolkit/bin/gdformat --line-length 88 **/*.gd 
+	~/.venvs/gdtoolkit/bin/gdformat --line-length 88 $(shell find -type f -iname "*.gd")
 
 install_gdtoolkit:
 	mkdir -p ~/.venvs/gdtoolkit/
