@@ -2,7 +2,6 @@
 
 [ext_resource path="res://Floor/FloorTexture.png" type="Texture" id=1]
 
-
 [resource]
 albedo_texture = ExtResource( 1 )
 uv1_triplanar = true
