@@ -41,13 +41,11 @@ func get_desired_base_velocity() -> Vector2:
 
 var turret_rotation: float = 0.0
 const max_turret_angular_velocity: float = 0.1
-var turret_rotation_direction: int = [-1, 1][randi() % 2]
 
 
 func get_desired_turret_rotation() -> float:
-	print(turret_rotation_direction)
-	turret_rotation += turret_rotation_direction * max_turret_angular_velocity
-	turret_rotation = turret_rotation
+	turret_rotation += max_turret_angular_velocity
+	turret_rotation = fmod(turret_rotation, 2 * PI)
 	return turret_rotation
 
 
