@@ -8,6 +8,7 @@ func get_facing_direction() -> float:
 func get_shoot_action() -> bool:
 	return false
 
+
 func get_max_speed() -> float:
 	return 0.0
 
@@ -48,9 +49,7 @@ func _physics_process(_delta: float):
 	else:
 		speed = max_speed
 
-		var facing: Vector2 = Vector2(
-			global_transform.basis.z.x, global_transform.basis.z.z
-		)
+		var facing: Vector2 = Global.three_to_two(global_transform.basis.z)
 		var direction_delta: float = desired_direction.angle_to(facing)
 
 		# Limit rotation speed
@@ -69,25 +68,30 @@ func _physics_process(_delta: float):
 
 onready var turret = $"TankTurret"
 
+
 func _process(_delta: float):
 	turret.rotation = -rotation + Vector3(0, get_facing_direction(), 0)
 
 	if get_shoot_action():
 		_shoot()
-		
+
 	if get_lay_mine_action():
 		_lay_mine()
 
+
 var Mine = preload("res://Mine/Mine.tscn")
 onready var mine_container: Node = get_node("/root/World/Mines")
+
 
 func _lay_mine():
 	var m = Mine.instance()
 	m.constructor(transform.origin)
 	mine_container.add_child(m)
 
+
 var Bullet = preload("res://Bullet/Bullet.tscn")
 onready var bullet_container: Node = get_node("/root/World/Bullets")
+
 
 func _shoot():
 	var b = Bullet.instance()

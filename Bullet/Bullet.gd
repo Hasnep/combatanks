@@ -7,8 +7,6 @@ const TURRRET_HEIGHT: float = 1.5
 var velocity: Vector3
 
 
-
-
 func constructor(parent: KinematicBody, turret_position: Vector3, direction: Vector3):
 	add_collision_exception_with(parent)  # Don't collide with parent
 	rotation = direction
