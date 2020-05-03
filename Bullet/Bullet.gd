@@ -7,12 +7,6 @@ const TURRRET_HEIGHT: float = 1.5
 var velocity: Vector3
 
 
-func two_to_three(v: Vector2) -> Vector3:
-	return Vector3(v.x, 0, v.y)
-
-
-func three_to_two(v: Vector3) -> Vector2:
-	return Vector2(v.x, v.z)
 
 
 func constructor(parent: KinematicBody, turret_position: Vector3, direction: Vector3):
@@ -28,16 +22,16 @@ func constructor(parent: KinematicBody, turret_position: Vector3, direction: Vec
 
 func _collide_wall(collision: KinematicCollision):
 	var collision_normal: Vector3 = collision.normal
-	var collision_normal_2d: Vector2 = three_to_two(collision_normal)
+	var collision_normal_2d: Vector2 = Global.three_to_two(collision_normal)
 	# Calculate the remaining motion after colliding
-	var remaining_motion_2d: Vector2 = three_to_two(collision.remainder).bounce(
+	var remaining_motion_2d: Vector2 = Global.three_to_two(collision.remainder).bounce(
 		collision_normal_2d
 	)
-	var remaining_motion_3d: Vector3 = two_to_three(remaining_motion_2d)
+	var remaining_motion_3d: Vector3 = Global.two_to_three(remaining_motion_2d)
 	# Calculate new velocity after colliding
-	var velocity_2d: Vector2 = three_to_two(velocity)
+	var velocity_2d: Vector2 = Global.three_to_two(velocity)
 	velocity_2d = velocity_2d.bounce(collision_normal_2d)
-	velocity = two_to_three(velocity_2d)
+	velocity = Global.two_to_three(velocity_2d)
 	# Rotate to face new direction
 	look_at(global_transform.origin - velocity, Vector3(0, 1, 0))
 	# Finish travelling remaining distance

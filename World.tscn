@@ -33,9 +33,6 @@ directional_shadow_split_3 = 0.2
 
 [node name="MouseMarker" type="MeshInstance" parent="."]
 
-[node name="Global" type="Node" parent="."]
-script = ExtResource( 4 )
-
 [node name="Walls" type="Node" parent="."]
 
 [node name="Wall" parent="Walls" instance=ExtResource( 5 )]
