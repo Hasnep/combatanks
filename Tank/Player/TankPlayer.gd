@@ -10,6 +10,10 @@ func get_max_angular_velocity() -> float:
 	return 0.1
 
 
+func get_max_bullets() -> int:
+	return 3
+
+
 func get_colour() -> Color:
 	var player_colours = ["#ff4949", "#f9f251", "#1af66c", "#3644ff", "#cb3cfd"]
 	randomize()
