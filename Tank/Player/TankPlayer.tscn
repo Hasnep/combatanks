@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Tank/TankTexture.tres" type="Material" id=1]
+[ext_resource path="res://Tank/TankTurret.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Tank/TankPlayer.gd" type="Script" id=3]
+[ext_resource path="res://Tank/TankBase.obj" type="ArrayMesh" id=5]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends \"res://Tank/TankTurret.gd\"
+
+onready var mouse_marker: MeshInstance = $\"../../MouseMarker\"
+
+
+func get_facing_direction() -> float:
+	var mouse_position_2d: Vector2 = Vector2(
+		mouse_marker.transform.origin.x, mouse_marker.transform.origin.z
+	)
+	var tank_position_2d: Vector2 = Vector2(transform.origin.x, transform.origin.z)
+	return (mouse_position_2d - tank_position_2d).angle_to(Vector2(0, 1))
+
+
+func get_shoot_action() -> bool:
+	return Input.is_action_just_pressed(\"shoot\")
+"
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends \"res://Tank/TankBase.gd\"
+
+
+"
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1, 1, 1.5 )
+
+[node name="TankPlayer" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="TankTurret" type="MeshInstance" parent="."]
+material_override = ExtResource( 1 )
+mesh = ExtResource( 2 )
+material/0 = null
+material/1 = null
+material/2 = null
+script = SubResource( 2 )
+
+[node name="TankBase" type="KinematicBody" parent="."]
+script = SubResource( 3 )
+
+[node name="Hitbox" type="CollisionShape" parent="TankBase"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 1 )
+
+[node name="TankBase" type="MeshInstance" parent="TankBase"]
+material_override = ExtResource( 1 )
+mesh = ExtResource( 5 )
+material/0 = null
