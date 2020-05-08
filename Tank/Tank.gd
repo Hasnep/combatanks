@@ -93,7 +93,7 @@ onready var mine_container: Node = get_node("/root/World/Mines")
 
 func _lay_mine():
 	var m = Mine.instance()
-	m.constructor(transform.origin)
+	m._constructor(self, transform.origin)
 	mine_container.add_child(m)
 
 
@@ -104,7 +104,7 @@ onready var bullet_container: Node = get_node("/root/World/Bullets")
 func _shoot():
 	if n_bullets < max_bullets:
 		var b = Bullet.instance()
-		b.constructor($".", transform.origin, turret.global_transform.basis.get_euler())
+		b._constructor(self, transform.origin, turret.global_transform.basis.get_euler())
 		bullet_container.add_child(b)
 		n_bullets += 1
 
